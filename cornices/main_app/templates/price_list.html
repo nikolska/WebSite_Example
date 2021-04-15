@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cennik
+{% endblock %}
+
+{% block content %}
+    <br><table class="table table-striped" align="center">
+        <tr align="center">
+            <th>Nazwa usługi</th>
+            <th>Cena netto</th>
+        </tr>
+        {% for object in object_list %}
+            <tr>
+                <td>{{ object.name }}</td>
+                <td align="center">{{ object.price }} zł/m<sup>2</sup></td>
+            </tr>
+        {% empty %}
+            <h3>Nie ma wyników</h3>
+        {% endfor %}
+    </table>
+{% endblock %}

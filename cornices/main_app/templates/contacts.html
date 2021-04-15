@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Kontakt
+{% endblock %}
+
+{% block content %}
+
+    <img src="/static/img/contact-us.jpg" class="img-fluid" alt="contact us image"><br><br>
+
+    <p class="contact-text">
+        Wszystkie osoby, które są zainteresowane współpracą z naszą firmą <b>zapraszamy do kontaktu</b>
+        drogą telefoniczną lub mailową. Nasza firma remontowa z chęcią podejmie się realizacji zleceń
+        o zróżnicowanym stopniu skomplikowania, które obejmują zarówno wykończenie mieszkań, jak i
+        adaptację pomieszczeń biurowych.
+    </p>
+    <p class="contact-text">
+        Z przyjemnością umówmy się z Państwem na <b>indywidualne spotkanie</b> na terenie Warszawy lub jej okolic.
+        Omówimy na nim nie tylko zakres niezbędnych prac, ale również Państwa oczekiwania, a następnie
+        przygotujemy dokładną wycenę za oferowane przez nas usługi remontowe lub wykończeniowe, uwzględniającą
+        metraż mieszkania, a także specyfikę wykonywanych robót.
+    </p>
+    <p class="contact-text">
+        Jesteśmy do dyspozycji naszych Klientów i mamy nadzieję, że będą Państwo zadowoleni z jakości
+        świadczonych przez nas usług wykończeniowych.
+    </p>
+
+    {% for object in object_list %}
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Dane kontaktowe</h5><hr>
+                <p class="card-text">{{ object.phone_number }} / {{ object.viber }} (Viber)</p>
+                <p class="card-text">{{ object.email }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Adres</h5><hr>
+                <p class="card-text">{{ object.street }}</p>
+                  <p class="card-text">{{ object.city }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Dane do faktury</h5><hr>
+                <p class="card-text">REGON: {{ object.REGON }}</p>
+                <p class="card-text">NIP: {{ object.NIP }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% empty %}
+        <h3>Nie ma danych kontaktowych</h3>
+    {% endfor %}
+
+{% endblock %}
